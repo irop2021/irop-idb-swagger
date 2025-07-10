@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Swagger UI</title>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:300,600|Titillium+Web:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.43.0/swagger-ui.css" >
+  <style>
+    html
+    {
+      box-sizing: border-box;
+      overflow: -moz-scrollbars-vertical;
+      overflow-y: scroll;
+    }
+    *,
+    *:before,
+    *:after
+    {
+      box-sizing: inherit;
+    }
+    body {
+      margin:0;
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+<div id="swagger-ui"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.43.0/swagger-ui-bundle.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.43.0/swagger-ui-standalone-preset.js"> </script>
+<script>
+window.onload = function() {
+  var spec = {"openapi": "3.0.3", "info": {"title": "IDB \uc548\uc804\uad00\ub9ac \uc194\ub8e8\uc158 - \ub85c\ubd07 \uc5f0\ub3d9 API", "description": "\uc544\uc774\ub514\ube44 \uc548\uc804\uad00\ub9ac \uc194\ub8e8\uc158 \uc11c\ubc84\uc640 \uc774\ub86d \ub85c\ubcf4\ud2f1\uc2a4 \ub85c\ubd07 \uac04\uc758 \uc5f0\ub3d9\uc744 \uc704\ud55c \uacf5\uc2dd API \uba85\uc138\uc11c\uc785\ub2c8\ub2e4.\n- **REST API:** \ub85c\ubd07\uc758 \ub4f1\ub85d, \uc21c\ucc30 \ucf54\uc2a4 \ub370\uc774\ud130 \uc694\uccad \ub4f1 \uc77c\ud68c\uc131 \ud1b5\uc2e0\uc5d0 \uc0ac\uc6a9\ub429\ub2c8\ub2e4.\n- **WebSocket API:** \ub85c\ubd07\uc758 \uc2e4\uc2dc\uac04 \uc0c1\ud0dc/\uc13c\uc11c \ub370\uc774\ud130 \uc804\uc1a1 \ubc0f \uc11c\ubc84\uc758 \uc2e4\uc2dc\uac04 \uc81c\uc5b4 \uba85\ub839\uc5d0 \uc0ac\uc6a9\ub429\ub2c8\ub2e4.\n- **\uc601\uc0c1 \uc2a4\ud2b8\ub9ac\ubc0d:** \uc11c\ubc84\uac00 \uc81c\uacf5\ud558\ub294 RTSP \uc8fc\uc18c\ub85c \ub85c\ubd07\uc774 \uc601\uc0c1\uc744 \uc804\uc1a1\ud569\ub2c8\ub2e4. \uc774 \uc8fc\uc18c\ub294 \ub85c\ubd07 \ub4f1\ub85d \uc2dc \uc11c\ubc84\uac00 \uc751\ub2f5\uc73c\ub85c \uc804\ub2ec\ud569\ub2c8\ub2e4.\n", "version": "0.0.0"}, "servers": [{"url": "https://api.idb-irop.com/v0", "description": "\uc544\uc774\ub514\ube44 \uc774\ub86d \uc5f0\ub3d9 \uc11c\ubc84"}], "tags": [{"name": "Robot Registration", "description": "\ub85c\ubd07\uc758 \ub4f1\ub85d, \uc124\uc815 \ub4f1 \uc0dd\uba85\uc8fc\uae30 \uad00\ub828 API"}, {"name": "Real-time Communication", "description": "WebSocket\uc744 \uc774\uc6a9\ud55c \uc2e4\uc2dc\uac04 \ud1b5\uc2e0 \uba85\uc138"}], "paths": {"/robots/register": {"post": {"tags": ["Robot Registration"], "summary": "\ub85c\ubd07 \ub4f1\ub85d", "description": "\ub85c\ubd07\uc774 \ubd80\ud305 \ud6c4 \uc11c\ubc84\uc5d0 \uc790\uc2e0\uc758 \uc815\ubcf4\ub97c \ub4f1\ub85d\ud569\ub2c8\ub2e4. \uc131\uacf5 \uc2dc \ud1b5\uc2e0\uc5d0 \ud544\uc694\ud55c \uc815\ubcf4(WebSocket, RTSP Push \uc8fc\uc18c \ub4f1)\ub97c \uc751\ub2f5\uc73c\ub85c \ubc1b\uc2b5\ub2c8\ub2e4.", "requestBody": {"$ref": "#/components/requestBodies/RobotRegistrationRequest"}, "responses": {"201": {"description": "\ub4f1\ub85d \uc131\uacf5", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/RobotRegistrationResponse"}}}}, "400": {"$ref": "#/components/responses/BadRequest"}}}}, "/ws/robot": {"get": {"tags": ["Real-time Communication"], "summary": "\ub85c\ubd07 \uc0c1\ud0dc \ubc0f \uc81c\uc5b4 WebSocket", "description": "\ub85c\ubd07\uc758 \uc2e4\uc2dc\uac04 \uc0c1\ud0dc \ubcf4\uace0 \ubc0f \uc11c\ubc84\uc758 \uc81c\uc5b4 \uba85\ub839\uc744 \uc704\ud55c WebSocket \uc5d4\ub4dc\ud3ec\uc778\ud2b8\uc785\ub2c8\ub2e4.\n\ud55c \ubc88 \uc5f0\uacb0\ub418\uba74 \uc774 \ucc44\ub110\uc744 \ud1b5\ud574 \uc544\ub798\uc5d0 \uba85\uc2dc\ub41c JSON \ud615\uc2dd\uc758 \uba54\uc2dc\uc9c0\ub97c \uc591\ubc29\ud5a5\uc73c\ub85c \uad50\ud658\ud569\ub2c8\ub2e4.\n\n---\n### **\ub85c\ubd07 -> \uc11c\ubc84 \uba54\uc2dc\uc9c0 (Robot-to-Server)**\n\n**1. \uc0c1\ud0dc \uc5c5\ub370\uc774\ud2b8 (`status_update`)**\n\ub85c\ubd07\uc758 \uc704\uce58, \ubc30\ud130\ub9ac, \uc13c\uc11c \uc815\ubcf4\ub97c \uc8fc\uae30\uc801\uc73c\ub85c \uc11c\ubc84\uc5d0 \uc804\uc1a1\ud569\ub2c8\ub2e4.\n- **Payload Schema:** `#/components/schemas/WsStatusUpdate`\n\n**2. \uc774\ubca4\ud2b8 \ubc1c\uc0dd (`event`)**\n\ubc30\ud130\ub9ac \ubd80\uc871 \uacbd\uace0 \ub4f1 \ub85c\ubd07\uc774 \ud310\ub2e8\ud55c \ud2b9\uc815 \uc774\ubca4\ud2b8\ub97c \uc11c\ubc84\uc5d0 \ubcf4\uace0\ud569\ub2c8\ub2e4.\n- **Payload Schema:** `#/components/schemas/WsEvent`\n\n---\n### **\uc11c\ubc84 -> \ub85c\ubd07 \uba54\uc2dc\uc9c0 (Server-to-Robot)**\n\n**1. \uba85\ub839 (`command`)**\n\uc11c\ubc84\uac00 \ub85c\ubd07\uc5d0\uac8c \uc21c\ucc30, \uc774\ub3d9, \uc81c\uc5b4 \ub4f1 \uac01\uc885 \ub3d9\uc791\uc744 \uc9c0\uc2dc\ud569\ub2c8\ub2e4.\n- **Payload Schema:** `#/components/schemas/WsCommand`\n"}}}, "components": {"requestBodies": {"RobotRegistrationRequest": {"description": "\ub85c\ubd07\uc758 \uae30\ubcf8 \uc815\ubcf4 \ubc0f \uc2a4\ud399", "required": true, "content": {"application/json": {"schema": {"$ref": "#/components/schemas/RobotRegistrationRequest"}}}}}, "responses": {"BadRequest": {"description": "\uc798\ubabb\ub41c \uc694\uccad (\ud544\uc218 \ud30c\ub77c\ubbf8\ud130 \ub204\ub77d \ub4f1)", "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ApiError"}}}}}, "schemas": {"RobotRegistrationRequest": {"type": "object", "required": ["robotId", "modelName", "capabilities"], "properties": {"robotId": {"type": "string", "description": "\ub85c\ubd07\uc758 \uace0\uc720 \uc2dd\ubcc4\uc790", "example": "irop-piro-d001"}, "modelName": {"type": "string", "description": "\ub85c\ubd07 \ubaa8\ub378\uba85", "example": "irop-piro-d"}, "ipAddress": {"type": "string", "format": "ipv4", "description": "\ub85c\ubd07\uc758 \ud604\uc7ac IP \uc8fc\uc18c"}, "capabilities": {"type": "array", "items": {"type": "string", "enum": ["thermal_cam", "rgb_cam_audio", "gas_sensor", "ptz_control"]}, "description": "\ub85c\ubd07\uc774 \uc9c0\uc6d0\ud558\ub294 \uae30\ub2a5 \ubaa9\ub85d"}}}, "RobotRegistrationResponse": {"type": "object", "properties": {"status": {"type": "string", "example": "registered"}, "websocketUrl": {"type": "string", "description": "\uc811\uc18d\ud574\uc57c \ud560 WebSocket \uc5d4\ub4dc\ud3ec\uc778\ud2b8 URL", "example": "wss://api.idb-irop.com/v0/ws/robot"}, "websocketAuthToken": {"type": "string", "description": "WebSocket \uc5f0\uacb0 \uc2dc \uc0ac\uc6a9\ud560 \uc778\uc99d \ud1a0\ud070"}, "rtspPushUrl": {"type": "string", "description": "\ub85c\ubd07\uc774 \uc601\uc0c1\uc744 \uc804\uc1a1(PUSH)\ud574\uc57c \ud560 \uc11c\ubc84\uc758 RTSP \ubbf8\ub514\uc5b4 \uc11c\ubc84 \uc8fc\uc18c", "example": "rtsp://api.idb-irop.com:8554/irop-001"}}}, "MapDataResponse": {"type": "object", "properties": {"mapId": {"type": "string", "example": "map_v1.2"}, "routes": {"type": "array", "items": {"type": "object", "properties": {"routeId": {"type": "string", "example": "route_A"}, "waypoints": {"type": "array", "items": {"type": "object", "properties": {"x": {"type": "number", "format": "float"}, "y": {"type": "number", "format": "float"}}}}}}}, "chargeStationLocation": {"type": "object", "properties": {"x": {"type": "number", "format": "float"}, "y": {"type": "number", "format": "float"}}}}}, "ApiError": {"type": "object", "properties": {"timestamp": {"type": "string", "format": "date-time"}, "status": {"type": "integer"}, "error": {"type": "string"}, "message": {"type": "string"}, "path": {"type": "string"}}}, "WsStatusUpdate": {"type": "object", "description": "\ub85c\ubd07\uc758 \uc8fc\uae30\uc801\uc778 \uc0c1\ud0dc \ubcf4\uace0 \uba54\uc2dc\uc9c0", "required": ["type", "robotId", "timestamp", "location", "battery", "sensors"], "properties": {"type": {"type": "string", "enum": ["status_update"]}, "robotId": {"type": "string", "example": "irop-piro-d001"}, "timestamp": {"type": "string", "format": "date-time"}, "location": {"type": "object", "properties": {"x": {"type": "number", "format": "float"}, "y": {"type": "number", "format": "float"}, "theta": {"type": "number", "format": "float", "description": "\ubc29\ud5a5 \uac01\ub3c4 (degrees)"}}}, "battery": {"type": "object", "properties": {"level": {"type": "integer", "description": "\ubc30\ud130\ub9ac \uc794\ub7c9 (%)"}, "isCharging": {"type": "boolean"}}}, "sensors": {"type": "object", "properties": {"thermal": {"type": "number", "format": "float", "description": "\uc5f4\ud654\uc0c1 \uce74\uba54\ub77c \uce21\uc815 \uc628\ub3c4 (\u00b0C)"}, "gas": {"type": "object", "properties": {"co": {"type": "number", "description": "\uc77c\uc0b0\ud654\ud0c4\uc18c \ub18d\ub3c4 (ppm)"}, "h2s": {"type": "number", "description": "\ud669\ud654\uc218\uc18c \ub18d\ub3c4 (ppm)"}}}}}}}, "WsEvent": {"type": "object", "description": "\ub85c\ubd07\uc774 \uc11c\ubc84\uc5d0 \ud2b9\uc774\uc0ac\ud56d\uc744 \ubcf4\uace0\ud558\ub294 \uba54\uc2dc\uc9c0", "required": ["type", "eventType"], "properties": {"type": {"type": "string", "enum": ["event"]}, "eventType": {"type": "string", "enum": ["low_battery_alert", "etc"]}, "payload": {"type": "object", "description": "\uc774\ubca4\ud2b8\uc758 \uc0c1\uc138 \ub0b4\uc6a9", "example": {"batteryLevel": 20, "message": "Returning to charge station."}}}}, "WsCommand": {"type": "object", "description": "\uc11c\ubc84\uac00 \ub85c\ubd07\uc5d0\uac8c \ub0b4\ub9ac\ub294 \uc81c\uc5b4 \uba85\ub839 \uba54\uc2dc\uc9c0. command \uc885\ub958\uc5d0 \ub530\ub77c payload \uad6c\uc870\uac00 \ub2ec\ub77c\uc9d1\ub2c8\ub2e4.", "required": ["type", "command"], "properties": {"type": {"type": "string", "enum": ["command"]}, "command": {"type": "string", "enum": ["start_patrol", "dispatch_to_event", "manual_control", "pause_patrol", "resume_patrol", "stop", "return_to_charge"]}, "payload": {"type": "object", "description": "\uba85\ub839\uc5d0 \ud544\uc694\ud55c \ud30c\ub77c\ubbf8\ud130."}}, "example": {"type": "command", "command": "start_patrol", "payload": {"routeId": "route_A", "waypoints": [{"x": 10, "y": 20}, {"x": 30, "y": 20}]}}}}}};
+  // Build a system
+  const ui = SwaggerUIBundle({
+    spec: spec,
+    dom_id: '#swagger-ui',
+    deepLinking: true,
+    presets: [
+      SwaggerUIBundle.presets.apis,
+      SwaggerUIStandalonePreset
+    ],
+    plugins: [
+      SwaggerUIBundle.plugins.DownloadUrl
+    ],
+    layout: "StandaloneLayout"
+  })
+  window.ui = ui
+}
+</script>
+</body>
+</html>
